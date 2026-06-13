@@ -9,4 +9,5 @@
 pillow\
 opencv-python\
 numpy\
-scikit-image}
+scikit-image\
+google-genai}
