@@ -48,11 +48,22 @@ def generate_ai_analysis(bug_count, similarity_percent):
 
     Use this exact format:
 
-    Ada beberapa temuan:
-    1. UI bug ...
-    2. UI bug ...
+    If differences are detected, explain them generally.
+
+    Example:
+
+    VisionQA menemukan beberapa perbedaan visual.
+
+    Jenis perubahan yang kemungkinan terdeteksi:
+    • Perubahan teks atau angka
+    • Perubahan nilai statistik
+    • Perubahan komponen UI
 
     Silahkan cek kembali area yang ditandai.
+
+    Do not invent specific bugs.
+    Do not mention release recommendation.
+    Do not mention similarity score.
 
     Rules:
     - If there is no bug, say: Tidak ada UI bug obvious yang terdeteksi.
@@ -96,7 +107,7 @@ if expected_file and actual_file:
     for contour in contours:
         area = cv2.contourArea(contour)
 
-        if area > 1000:
+        if area > 1500:
             x, y, w, h = cv2.boundingRect(contour)
             cv2.rectangle(result, (x, y), (x + w, y + h), (255, 0, 0), 3)
             bug_count += 1
@@ -133,3 +144,23 @@ if expected_file and actual_file:
 
         except Exception:
             st.warning("AI sedang tidak tersedia, menampilkan hasil basic analysis.")
+
+            if bug_count == 0 or similarity_percent > 98:
+                st.write("""
+                Tidak ada perbedaan visual yang signifikan terdeteksi.
+
+                Tampilan aplikasi terlihat konsisten dengan desain yang diharapkan.
+                """)
+
+            else:
+                st.write("""
+                VisionQA menemukan beberapa perbedaan visual.
+
+                Jenis perubahan yang kemungkinan terdeteksi:
+                • Perubahan teks atau angka
+                • Perubahan nilai statistik
+                • Perubahan komponen UI
+                • Perubahan tampilan grafik atau elemen visual
+
+                Silahkan cek kembali area yang ditandai untuk verifikasi lebih lanjut.
+                """)
