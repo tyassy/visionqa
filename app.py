@@ -63,7 +63,7 @@ def generate_ai_analysis(bug_count, similarity_percent):
     """
 
     response = client.models.generate_content(
-        model="gemini-2.0-flash",
+        model="gemini-2.5-flash",
         contents=prompt
     )
 
