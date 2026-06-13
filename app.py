@@ -96,7 +96,7 @@ if expected_file and actual_file:
     for contour in contours:
         area = cv2.contourArea(contour)
 
-        if area > 5000:
+        if area > 3000:
             x, y, w, h = cv2.boundingRect(contour)
             cv2.rectangle(result, (x, y), (x + w, y + h), (255, 0, 0), 3)
             bug_count += 1
@@ -133,18 +133,3 @@ if expected_file and actual_file:
 
         except Exception:
             st.warning("AI sedang tidak tersedia, menampilkan hasil basic analysis.")
-
-            if bug_count == 0 or similarity_percent > 98:
-                st.write("Tidak ada UI bug obvious yang terdeteksi.")
-            else:
-                findings = ""
-                for i in range(1, min(bug_count, 5) + 1):
-                    findings += f"{i}. UI bug {i}\n"
-
-                st.write(f"""
-        Ada beberapa temuan:
-
-        {findings}
-
-        Silahkan cek kembali area yang ditandai.
-        """)
