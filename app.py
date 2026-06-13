@@ -19,13 +19,13 @@ choice = st.radio(
 )
 
 if choice == "No":
-    st.info("Baik, silahkan datang lagi jika perlu bantuan untuk cari UI Bug.")
+    st.info("Baik, silakan datang lagi jika perlu bantuan untuk cari UI Bug.")
     st.stop()
 
 if choice == "Belum pilih":
     st.stop()
 
-st.write("Silahkan upload expected design dan actual screenshot.")
+st.write("Silakan upload expected design dan actual screenshot.")
 
 expected_file = st.file_uploader("Upload Expected Image / Figma Design", type=["png", "jpg", "jpeg"])
 actual_file = st.file_uploader("Upload Actual Screenshot", type=["png", "jpg", "jpeg"])
@@ -54,12 +54,13 @@ def generate_ai_analysis(bug_count, similarity_percent):
 
     VisionQA menemukan beberapa perbedaan visual.
 
-    Jenis perubahan yang kemungkinan terdeteksi:
-    • Perubahan teks atau angka
-    • Perubahan nilai statistik
-    • Perubahan komponen UI
+    Perbedaan yang kemungkinan terdeteksi:
+    • Perbedaan teks atau angka
+    • Perbedaan nilai statistik
+    • Perbedaan komponen UI
+    • Perbedaan tampilan grafik atau elemen visual
 
-    Silahkan cek kembali area yang ditandai untuk memastikan kesesuaian dengan desain yang diharapkan.
+    Silakan cek kembali area yang ditandai untuk memastikan kesesuaian dengan desain yang diharapkan.
 
     Do not invent specific bugs.
     Do not mention release recommendation.
@@ -156,12 +157,12 @@ if expected_file and actual_file:
                 st.markdown("""
                 VisionQA menemukan beberapa perbedaan visual.
 
-                **Jenis perubahan yang kemungkinan terdeteksi:**
+                **Perbedaan yang kemungkinan terdeteksi:**
 
-                - Perubahan teks atau angka
-                - Perubahan nilai statistik
-                - Perubahan komponen UI
-                - Perubahan tampilan grafik atau elemen visual
+                - Perbedaan teks atau angka
+                - Perbedaan nilai statistik
+                - Perbedaan komponen UI
+                - Perbedaan tampilan grafik atau elemen visual
 
-                Silahkan periksa kembali area yang ditandai untuk memastikan kesesuaian dengan desain yang diharapkan.
+                Silakan periksa kembali area yang ditandai untuk memastikan kesesuaian dengan desain yang diharapkan.
                 """)
