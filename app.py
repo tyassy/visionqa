@@ -59,7 +59,7 @@ def generate_ai_analysis(bug_count, similarity_percent):
     • Perubahan nilai statistik
     • Perubahan komponen UI
 
-    Silahkan cek kembali area yang ditandai.
+    Silahkan cek kembali area yang ditandai untuk memastikan kesesuaian dengan desain yang diharapkan.
 
     Do not invent specific bugs.
     Do not mention release recommendation.
@@ -140,7 +140,7 @@ if expected_file and actual_file:
                 similarity_percent
             )
 
-            st.write(ai_result)
+            st.markdown(ai_result)
 
         except Exception:
             st.warning("AI sedang tidak tersedia, menampilkan hasil basic analysis.")
@@ -153,14 +153,15 @@ if expected_file and actual_file:
                 """)
 
             else:
-                st.write("""
+                st.markdown("""
                 VisionQA menemukan beberapa perbedaan visual.
 
-                Jenis perubahan yang kemungkinan terdeteksi:
-                • Perubahan teks atau angka
-                • Perubahan nilai statistik
-                • Perubahan komponen UI
-                • Perubahan tampilan grafik atau elemen visual
+                **Jenis perubahan yang kemungkinan terdeteksi:**
 
-                Silahkan cek kembali area yang ditandai untuk verifikasi lebih lanjut.
+                - Perubahan teks atau angka
+                - Perubahan nilai statistik
+                - Perubahan komponen UI
+                - Perubahan tampilan grafik atau elemen visual
+
+                Silahkan periksa kembali area yang ditandai untuk memastikan kesesuaian dengan desain yang diharapkan.
                 """)
