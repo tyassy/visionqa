@@ -96,7 +96,7 @@ if expected_file and actual_file:
     for contour in contours:
         area = cv2.contourArea(contour)
 
-        if area > 3000:
+        if area > 1000:
             x, y, w, h = cv2.boundingRect(contour)
             cv2.rectangle(result, (x, y), (x + w, y + h), (255, 0, 0), 3)
             bug_count += 1
