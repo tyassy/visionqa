@@ -118,7 +118,7 @@ if expected_file and actual_file:
     st.subheader("Result")
 
     similarity_percent = round(score * 100, 2)
-    st.write(f"Similarity score: **{similarity_percent}%**")
+    st.caption("Analisis visual selesai.")
 
     st.subheader("VisionQA Analysis")
 
@@ -131,6 +131,20 @@ if expected_file and actual_file:
 
             st.write(ai_result)
 
-        except Exception as e:
-            st.error("AI analysis gagal dibuat.")
-            st.write(e)
+        except Exception:
+            st.warning("AI sedang tidak tersedia, menampilkan hasil basic analysis.")
+
+            if bug_count == 0 or similarity_percent > 98:
+                st.write("Tidak ada UI bug obvious yang terdeteksi.")
+            else:
+                findings = ""
+                for i in range(1, min(bug_count, 5) + 1):
+                    findings += f"{i}. UI bug {i}\n"
+
+                st.write(f"""
+        Ada beberapa temuan:
+
+        {findings}
+
+        Silahkan cek kembali area yang ditandai.
+        """)
