@@ -54,15 +54,17 @@ def generate_ai_analysis(bug_count, similarity_percent):
 
     VisionQA menemukan beberapa perbedaan visual.
 
-    Perbedaan yang kemungkinan terdeteksi:
-    • Perbedaan teks atau angka
-    • Perbedaan nilai statistik
-    • Perbedaan komponen UI
-    • Perbedaan tampilan grafik atau elemen visual
+    **Perbedaan yang kemungkinan terdeteksi:**
+
+    - Perbedaan teks atau angka
+    - Perbedaan nilai statistik
+    - Perbedaan komponen UI
+    - Perbedaan tampilan grafik atau elemen visual
 
     Silakan cek kembali area yang ditandai untuk memastikan kesesuaian dengan desain yang diharapkan.
 
     Do not invent specific bugs.
+    Use markdown bullet list with '-' characters.
     Do not mention release recommendation.
     Do not mention similarity score.
 
