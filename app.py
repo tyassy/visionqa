@@ -63,7 +63,7 @@ def generate_ai_analysis(bug_count, similarity_percent):
     """
 
     response = client.models.generate_content(
-        model="gemini-1.5-flash",
+        model="gemini-2.0-flash",
         contents=prompt
     )
 
@@ -96,7 +96,7 @@ if expected_file and actual_file:
     for contour in contours:
         area = cv2.contourArea(contour)
 
-        if area > 2000:
+        if area > 5000:
             x, y, w, h = cv2.boundingRect(contour)
             cv2.rectangle(result, (x, y), (x + w, y + h), (255, 0, 0), 3)
             bug_count += 1
